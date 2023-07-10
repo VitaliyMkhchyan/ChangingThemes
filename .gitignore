@@ -3,3 +3,5 @@ build
 dist
 __main__.spec
 .idea
+build.sh
+styles
