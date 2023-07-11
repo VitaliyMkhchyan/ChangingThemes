@@ -7,7 +7,7 @@ from getpass import getuser
 import json
 from loguru import logger
 
-# User name
+# get username
 USER: str = getuser()
 
 LOG_FILE: str = f"/home/{USER}/.debug_styles.log"
