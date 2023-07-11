@@ -7,7 +7,7 @@ from getpass import getuser
 import json
 from loguru import logger
 
-# get username
+# Get username
 USER: str = getuser()
 
 LOG_FILE: str = f"/home/{USER}/.debug_styles.log"
@@ -28,9 +28,9 @@ SUBLIME_TEXT_DARK: str = "Default Dark.sublime-theme"
 SUBLIME_TEXT_DARK_SYNTAX: str = "Monokai.sublime-color-scheme"
 
 
-class Styles:
+class ChangingThemes:
     def __init__(self) -> None:
-        # logger init
+        # Logger init
         logger.add(LOG_FILE, rotation="1024 KB", compression="zip")
 
         logger.debug("Launching the application...")
@@ -63,33 +63,37 @@ class Styles:
             date: str = str(datetime.today())
             date: list = date.split(" ")
 
-            # theme: str = os.popen("gsettings get org.gnome.desktop.interface color-scheme").read().replace("'", "")
+            # Current theme
+            theme: str = os.popen("gsettings get org.gnome.desktop.interface color-scheme").read().replace("'", "")
 
             # Set light theme
             if time1 < date[1] < time2:
-                # System
-                os.system("gsettings set org.gnome.desktop.interface color-scheme 'default'")
+                if theme == "prefer-dark\n":
+                    # System
+                    os.system("gsettings set org.gnome.desktop.interface color-scheme 'default'")
 
-                # Visual Studio Code
-                self._set_vscode_theme(theme=VSCODE_LIGHT)
+                    # Visual Studio Code
+                    self._set_vscode_theme(theme=VSCODE_LIGHT)
 
-                # Sublime Text
-                self._set_sublime_text_theme(theme=SUBLIME_TEXT_LIGHT, theme_syntax=SUBLIME_TEXT_LIGHT_SYNTAX)
+                    # Sublime Text
+                    self._set_sublime_text_theme(theme=SUBLIME_TEXT_DARK, theme_syntax=SUBLIME_TEXT_DARK_SYNTAX)
 
-                logger.debug("Theme: light")
+                    logger.debug("Theme: light\n")
 
             # Set dark theme
             if time1 >= date[1] or date[1] >= time2:
-                # System
-                os.system("gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'")
+                if theme == "default\n":
+                    # System
+                    os.system("gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'")
 
-                # Visual Studio Code
-                self._set_vscode_theme(theme=VSCODE_DARK)
+                    # Visual Studio Code
+                    self._set_vscode_theme(theme=VSCODE_LIGHT)
 
-                # Sublime Text
-                self._set_sublime_text_theme(theme=SUBLIME_TEXT_DARK, theme_syntax=SUBLIME_TEXT_DARK_SYNTAX)
+                    # Sublime Text
+                    self._set_sublime_text_theme(theme=SUBLIME_TEXT_DARK, theme_syntax=SUBLIME_TEXT_DARK_SYNTAX)
 
-                logger.debug("Theme: dark")
+                    logger.debug("Theme: dark\n")
+
             try:
                 time.sleep(1)
             except KeyboardInterrupt:
@@ -115,7 +119,7 @@ class Styles:
             logger.error(f"File {VSCODE_SETTINGS} not found!")
 
     @logger.catch
-    def _set_sublime_text_theme(self, theme: str, theme_syntax: str) -> None:
+    def _set_sublime_text_theme(self, theme: str, theme_syntax) -> None:
         """ Changing the theme in Sublime Text """
 
         # Does the file exist
@@ -139,4 +143,4 @@ class Styles:
 
 
 if __name__ == "__main__":
-    style: Styles = Styles()
+    style: ChangingThemes = ChangingThemes()
