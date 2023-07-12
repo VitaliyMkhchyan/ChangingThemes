@@ -87,7 +87,7 @@ class ChangingThemes:
                     os.system("gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'")
 
                     # Visual Studio Code
-                    self._set_vscode_theme(theme=VSCODE_LIGHT)
+                    self._set_vscode_theme(theme=VSCODE_DARK)
 
                     # Sublime Text
                     self._set_sublime_text_theme(theme=SUBLIME_TEXT_DARK, theme_syntax=SUBLIME_TEXT_DARK_SYNTAX)
