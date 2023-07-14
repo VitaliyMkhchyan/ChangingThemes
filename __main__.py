@@ -95,7 +95,7 @@ class ChangingThemes:
                     logger.debug("Theme: dark\n")
 
             try:
-                time.sleep(1)
+                time.sleep(5)
             except KeyboardInterrupt:
                 logger.info("Shutting down the application")
                 sys.exit(0)
