@@ -76,7 +76,7 @@ class ChangingThemes:
                     self._set_vscode_theme(theme=VSCODE_LIGHT)
 
                     # Sublime Text
-                    self._set_sublime_text_theme(theme=SUBLIME_TEXT_DARK, theme_syntax=SUBLIME_TEXT_DARK_SYNTAX)
+                    self._set_sublime_text_theme(theme=SUBLIME_TEXT_LIGHT, theme_syntax=SUBLIME_TEXT_LIGHT_SYNTAX)
 
                     logger.debug("Theme: light\n")
 
