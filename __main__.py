@@ -68,31 +68,35 @@ class ChangingThemes:
 
             # Set light theme
             if time1 < date[1] < time2:
-                if theme == "prefer-dark\n":
-                    # System
-                    os.system("gsettings set org.gnome.desktop.interface color-scheme 'default'")
+                if theme == "default\n":
+                    continue
 
-                    # Visual Studio Code
-                    self._set_vscode_theme(theme=VSCODE_LIGHT)
+                # System
+                os.system("gsettings set org.gnome.desktop.interface color-scheme 'default'")
 
-                    # Sublime Text
-                    self._set_sublime_text_theme(theme=SUBLIME_TEXT_LIGHT, theme_syntax=SUBLIME_TEXT_LIGHT_SYNTAX)
+                # Visual Studio Code
+                self._set_vscode_theme(theme=VSCODE_LIGHT)
 
-                    logger.debug("Theme: light\n")
+                # Sublime Text
+                self._set_sublime_text_theme(theme=SUBLIME_TEXT_LIGHT, theme_syntax=SUBLIME_TEXT_LIGHT_SYNTAX)
+
+                logger.debug("Theme: light\n")
 
             # Set dark theme
             if time1 >= date[1] or date[1] >= time2:
-                if theme == "default\n":
-                    # System
-                    os.system("gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'")
+                if theme == "prefer-dark\n":
+                    continue
 
-                    # Visual Studio Code
-                    self._set_vscode_theme(theme=VSCODE_DARK)
+                # System
+                os.system("gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'")
 
-                    # Sublime Text
-                    self._set_sublime_text_theme(theme=SUBLIME_TEXT_DARK, theme_syntax=SUBLIME_TEXT_DARK_SYNTAX)
+                # Visual Studio Code
+                self._set_vscode_theme(theme=VSCODE_DARK)
 
-                    logger.debug("Theme: dark\n")
+                # Sublime Text
+                self._set_sublime_text_theme(theme=SUBLIME_TEXT_DARK, theme_syntax=SUBLIME_TEXT_DARK_SYNTAX)
+
+                logger.debug("Theme: dark\n")
 
             try:
                 time.sleep(5)
