@@ -60,8 +60,7 @@ class ChangingThemes:
         """ Changing the theme """
         while True:
             # Today date
-            date: str = str(datetime.today())
-            date: list = date.split(" ")
+            date: list = str(datetime.today()).split(" ")  # ['2023-08-18', '00:48:11.518222']
 
             # Current theme
             theme: str = os.popen("gsettings get org.gnome.desktop.interface color-scheme").read().replace("'", "")
