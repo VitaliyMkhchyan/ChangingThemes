@@ -1,3 +1,4 @@
+import subprocess
 from configparser import ConfigParser
 import sys
 import os
@@ -115,7 +116,8 @@ class ChangingThemes:
                            "editor.unicodeHighlight.nonBasicASCII": "false",
                            "editor.largeFileOptimizations": "false",
                            "editor.minimap.enabled": "false",
-                           "workbench.colorTheme": theme
+                           "workbench.colorTheme": theme,
+                           "files.autoSave": "afterDelay"
                            }, file)
             logger.debug("VSCode set theme: " + theme)
         else:
