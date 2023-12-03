@@ -1,4 +1,3 @@
-import subprocess
 from configparser import ConfigParser
 import sys
 import os
@@ -16,6 +15,7 @@ CONFIG_FILE: str = f"/home/{USER}/.config/Styles/config.ini"
 
 # Visual Studio Code
 VSCODE_SETTINGS: str = f"/home/{USER}/.config/Code/User/settings.json"
+
 VSCODE_LIGHT: str = "Default Light Modern"
 VSCODE_DARK: str = "Visual Studio Dark"
 
@@ -69,6 +69,7 @@ class ChangingThemes:
             # Set light theme
             if time1 < date[1] < time2:
                 if theme == "default\n":
+                    time.sleep(60)
                     continue
 
                 # System
@@ -85,6 +86,7 @@ class ChangingThemes:
             # Set dark theme
             if time1 >= date[1] or date[1] >= time2:
                 if theme == "prefer-dark\n":
+                    time.sleep(60)
                     continue
 
                 # System
@@ -99,7 +101,7 @@ class ChangingThemes:
                 logger.debug("Theme: dark\n")
 
             try:
-                time.sleep(5)
+                time.sleep(30)
             except KeyboardInterrupt:
                 logger.info("Shutting down the application")
                 sys.exit(0)
