@@ -1,3 +1,4 @@
+#!/usr/bin/python
 from configparser import ConfigParser
 import sys
 import os
@@ -68,12 +69,12 @@ class ChangingThemes:
 
             # Set light theme
             if time1 < date[1] < time2:
-                if theme == "default\n":
+                if theme == "prefer-light\n":
                     time.sleep(60)
                     continue
 
                 # System
-                os.system("gsettings set org.gnome.desktop.interface color-scheme 'default'")
+                os.system("gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'")
 
                 # Visual Studio Code
                 self._set_vscode_theme(theme=VSCODE_LIGHT)
