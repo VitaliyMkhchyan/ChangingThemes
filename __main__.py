@@ -120,7 +120,8 @@ class ChangingThemes:
                            "editor.largeFileOptimizations": "false",
                            "editor.minimap.enabled": "false",
                            "workbench.colorTheme": theme,
-                           "files.autoSave": "afterDelay"
+                           "files.autoSave": "afterDelay",
+                           "window.newWindowDimensions": "inherit"
                            }, file)
             logger.debug("VSCode set theme: " + theme)
         else:
